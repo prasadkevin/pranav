@@ -23,7 +23,7 @@
                         maroon: {
                             800: '#520f1c',
                             900: '#3D0C15',
-                            950: '#22060B',
+                            950: '#1e030b',
                         },
                         gold: {
                             200: '#fef08a',
@@ -52,7 +52,7 @@
         body {
             background: #0f0207;
             background-image: 
-                radial-gradient(circle at 50% 0%, #3D0C15 0%, #22060B 60%, #080104 100%);
+                radial-gradient(circle at 50% 0%, #3D0C15 0%, #1e030b 50%, #080104 100%);
             font-family: 'Montserrat', sans-serif;
             color: #2b2b2b;
             min-height: 100vh;
@@ -60,7 +60,7 @@
 
         /* Gold Shimmer Text Effect */
         .gold-shimmer {
-            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #D4AF37 50%, #fbf5b7 75%, #aa771c 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
@@ -71,7 +71,7 @@
             to { background-position: 200% center; }
         }
 
-        /* Arch Header Frame */
+        /* Arch Header Container Styling */
         .arch-header-container {
             position: relative;
         }
@@ -92,65 +92,48 @@
             z-index: 10;
         }
 
-        /* Top Overlay Shader */
+        /* Top Floral Overlay */
         .floral-top-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 150px;
-            background: radial-gradient(ellipse at top, rgba(82, 15, 28, 0.9), transparent 70%);
+            background: radial-gradient(ellipse at top, rgba(61, 12, 21, 0.9), transparent 70%);
             pointer-events: none;
             z-index: 5;
         }
 
-        /* Glassmorphism Card Style */
+        /* Glassmorphism Card Effect */
         .glass-card {
-            background: rgba(255, 255, 255, 0.96);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(212, 175, 55, 0.25);
-            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.18), 0 0 15px rgba(212, 175, 55, 0.12);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15), 0 0 15px rgba(212, 175, 55, 0.1);
         }
 
-        /* Floating Audio Control Pill */
-        .audio-pill {
-            position: fixed;
-            bottom: 22px;
-            right: 22px;
-            z-index: 100;
-            background: rgba(34, 6, 11, 0.92);
-            border: 1px solid rgba(212, 175, 55, 0.6);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
         }
-
-        /* Smooth Scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #0f0207; }
-        ::-webkit-scrollbar-thumb { background: #3D0C15; border-radius: 3px; }
+        ::-webkit-scrollbar-track {
+            background: #0f0207;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3D0C15;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-start p-0 sm:p-4 md:p-6 overflow-x-hidden select-none">
 
-    <!-- HTML5 Audio Element explicitly loading "song", "song.mp3", "song.wav", "song.ogg" -->
-    <audio id="wedding-audio" loop preload="auto">
-        <source src="song" type="audio/mp3">
+    <!-- Hidden HTML5 Audio Element targeting song.mp3 with song fallback -->
+    <audio id="wedding-audio" preload="auto" loop style="display: none;">
         <source src="song.mp3" type="audio/mpeg">
-        <source src="song.wav" type="audio/wav">
-        <source src="song.ogg" type="audio/ogg">
+        <source src="song" type="audio/mpeg">
     </audio>
 
-    <!-- Floating Audio Control Toggle -->
-    <div onclick="toggleAudio()" id="audio-indicator" class="audio-pill rounded-full px-4 py-2 flex items-center gap-2.5 text-gold-300 text-xs cursor-pointer hover:scale-105 transition-all">
-        <span class="relative flex h-2 w-2">
-            <span id="audio-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75"></span>
-            <span id="audio-dot" class="relative inline-flex rounded-full h-2 w-2 bg-gold-500"></span>
-        </span>
-        <i id="audio-icon" class="fa-solid fa-music text-gold-400 text-xs"></i>
-        <span id="audio-status-text" class="font-medium tracking-wide text-[11px]">🎵 Music ON</span>
-    </div>
-
-    <!-- Main Mobile Frame Container -->
+    <!-- Main Container Card / Phone Shell -->
     <main id="card-container" class="w-full max-w-[420px] bg-cream-100 shadow-2xl rounded-none sm:rounded-[36px] overflow-hidden border-0 sm:border-[5px] border-gold-600/30 my-0 sm:my-4 relative transition-all duration-300">
         
         <!-- ================= HERO ARCH TOP SECTION ================= -->
@@ -211,14 +194,14 @@
                 Wedding Celebration
             </p>
 
-            <!-- Pill Info Badges -->
+            <!-- Pill Info Buttons -->
             <div class="mt-7 space-y-2.5 relative z-20 max-w-[290px] mx-auto text-xs font-medium">
-                <div class="bg-maroon-950/80 border border-gold-500/40 backdrop-blur-md rounded-full py-2.5 px-4 text-neutral-200 flex items-center justify-center gap-2 shadow-inner">
+                <div class="bg-maroon-950/70 border border-gold-500/40 backdrop-blur-md rounded-full py-2.5 px-4 text-neutral-200 flex items-center justify-center gap-2 shadow-inner">
                     <i class="fa-regular fa-calendar-check text-gold-400"></i>
                     <span class="uppercase text-[10.5px] tracking-wider font-semibold">WEDNESDAY, 23 DECEMBER 2026</span>
                 </div>
 
-                <div class="bg-maroon-950/80 border border-gold-500/40 backdrop-blur-md rounded-full py-2.5 px-4 text-neutral-200 flex items-center justify-center gap-2 shadow-inner">
+                <div class="bg-maroon-950/70 border border-gold-500/40 backdrop-blur-md rounded-full py-2.5 px-4 text-neutral-200 flex items-center justify-center gap-2 shadow-inner">
                     <i class="fa-regular fa-clock text-gold-400"></i>
                     <span class="uppercase text-[10.5px] tracking-wider font-semibold">07:30 PM ONWARDS</span>
                 </div>
@@ -257,7 +240,7 @@
             </div>
         </section>
 
-        <!-- ================= VENUE CARD SECTION ================= -->
+        <!-- ================= VENUE SECTION ================= -->
         <section class="px-5 py-2">
             <div class="glass-card rounded-3xl p-6 text-center relative">
                 <div class="w-10 h-10 mx-auto rounded-full bg-maroon-900 text-gold-300 flex items-center justify-center mb-3 shadow-md border border-gold-500/30">
@@ -298,7 +281,7 @@
             <!-- Event Timeline Card -->
             <div class="glass-card rounded-3xl p-6 space-y-6 text-center">
                 
-                <!-- Date -->
+                <!-- The Date -->
                 <div class="space-y-1">
                     <div class="w-8 h-8 mx-auto rounded-full bg-maroon-900/10 text-maroon-900 flex items-center justify-center text-xs mb-1.5">
                         <i class="fa-regular fa-calendar-days"></i>
@@ -341,7 +324,7 @@
                     </div>
                     <p class="text-[9px] tracking-[0.22em] text-neutral-400 font-bold uppercase">MUHURTAM</p>
                     <h4 class="font-cinzel text-lg font-bold text-maroon-900">
-                        3 AM
+                        3:00 AM
                     </h4>
                     <p class="text-[11px] italic font-serif text-neutral-500">
                         Solemnization of marriage & blessings
@@ -355,6 +338,7 @@
         <section class="px-5 pb-8 pt-2">
             <div class="glass-card rounded-[32px] p-6 text-center border border-gold-500/30 relative">
                 
+                <!-- Sparkling Motifs Top -->
                 <div class="flex items-center justify-center gap-3 mb-2">
                     <span class="text-maroon-800 text-sm">✦</span>
                     <span class="bg-maroon-900/10 text-maroon-900 font-semibold px-3 py-1 rounded-full text-[9px] tracking-[0.25em] uppercase">
@@ -371,7 +355,7 @@
                     Captured memories on our journey to forever
                 </p>
 
-                <!-- Embedded Couple Photo from 'image.jpg' with Fallback -->
+                <!-- Embedded Photo Container loading image.jpg with Fallback -->
                 <div class="relative mx-auto rounded-2xl overflow-hidden shadow-xl border-2 border-gold-500/40 bg-neutral-900 min-h-[300px] flex items-center justify-center">
                     <img 
                         id="couple-photo" 
@@ -381,9 +365,9 @@
                         class="w-full h-auto object-cover block rounded-2xl transition-all duration-300"
                     />
 
-                    <!-- Couple Overlay Label -->
+                    <!-- Overlay Label -->
                     <div class="absolute bottom-3 left-0 right-0 text-center">
-                        <span class="bg-maroon-950/85 backdrop-blur-md text-gold-300 font-cinzel text-xs px-4 py-1.5 rounded-full border border-gold-500/40 tracking-widest uppercase shadow-md">
+                        <span class="bg-maroon-950/80 backdrop-blur-md text-gold-300 font-cinzel text-xs px-4 py-1.5 rounded-full border border-gold-500/40 tracking-widest uppercase shadow-md">
                             Prasad & Navyasri
                         </span>
                     </div>
@@ -405,15 +389,13 @@
 
     <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
+        // Target Date: 23 December 2026 at 7:30 PM
         const weddingTargetDate = new Date("2026-12-23T19:30:00").getTime();
-        let audioContext = null;
-        let isPlayingAudio = false;
-        let useSynthFallback = false;
 
-        // Fallback SVG when image.jpg is missing
+        // SVG Fallback for missing image.jpg
         function handleImageError(imgElement) {
             imgElement.onerror = null;
-            const fallbackSvg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600"><defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="%233a3e42"/><stop offset="100%" stop-color="%231f2225"/></linearGradient></defs><rect width="500" height="600" fill="url(%23bg)"/><path d="M 330 0 L 330 600" stroke="%23717a82" stroke-width="24"/><ellipse cx="180" cy="205" rx="16" ry="20" fill="%23d9a07a"/><ellipse cx="250" cy="125" rx="18" ry="22" fill="%23c68a62"/><rect width="500" height="600" fill="none" stroke="%23d4af37" stroke-width="12"/></svg>`;
+            const fallbackSvg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600"><defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="%233a3e42"/><stop offset="100%" stop-color="%231f2225"/></linearGradient></defs><rect width="500" height="600" fill="url(%23bg)"/><path d="M 330 0 L 330 600" stroke="%23717a82" stroke-width="24"/><path d="M 120 220 C 150 280, 260 380, 330 420" fill="none" stroke="%23a0aab2" stroke-width="8"/><ellipse cx="180" cy="205" rx="16" ry="20" fill="%23d9a07a"/><ellipse cx="250" cy="125" rx="18" ry="22" fill="%23c68a62"/><rect width="500" height="600" fill="none" stroke="%23D4AF37" stroke-width="12"/></svg>`;
             imgElement.src = fallbackSvg;
         }
 
@@ -440,110 +422,45 @@
                     document.getElementById("count-secs").innerText = "00";
                 }
             }
+
             updateTimer();
             setInterval(updateTimer, 1000);
         }
 
-        // Attempts to play local audio file 'song' first, falls back to Web Audio API Shehnai Synthesizer
-        function initAndPlayAudio() {
-            if (isPlayingAudio) return;
-
-            const audioElement = document.getElementById('wedding-audio');
-
-            if (!useSynthFallback) {
-                audioElement.play().then(() => {
-                    isPlayingAudio = true;
-                    updateAudioUI(true);
+        // Automatic Direct Audio Playback Logic
+        function playSong() {
+            const audio = document.getElementById('wedding-audio');
+            if (audio) {
+                audio.play().then(() => {
+                    // Audio started successfully, remove event listeners
+                    removeInteractionListeners();
                 }).catch(() => {
-                    // Audio file unreadable or missing, switch to Web Audio Synthesizer
-                    useSynthFallback = true;
-                    playSyntheticMelody();
+                    // Autoplay blocked by browser policy; waiting for user interaction
                 });
-            } else {
-                playSyntheticMelody();
             }
         }
 
-        // Web Audio Synthesizer Engine (Indian Shehnai Melodic Fallback)
-        function playSyntheticMelody() {
-            if (!audioContext) {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                audioContext = new AudioContext();
-            }
-
-            if (audioContext.state === 'suspended') {
-                audioContext.resume();
-            }
-
-            isPlayingAudio = true;
-            updateAudioUI(true);
-
-            const scale = [261.63, 277.18, 329.63, 349.23, 392.00, 415.30, 493.88, 523.25];
-            let noteIndex = 0;
-
-            function triggerNextNote() {
-                if (!isPlayingAudio || !useSynthFallback) return;
-
-                const osc = audioContext.createOscillator();
-                const gain = audioContext.createGain();
-
-                osc.type = noteIndex % 2 === 0 ? 'sawtooth' : 'triangle';
-                const freq = scale[noteIndex % scale.length];
-                osc.frequency.setValueAtTime(freq, audioContext.currentTime);
-
-                gain.gain.setValueAtTime(0.001, audioContext.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.05, audioContext.currentTime + 0.25);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1.2);
-
-                osc.connect(gain);
-                gain.connect(audioContext.destination);
-
-                osc.start();
-                osc.stop(audioContext.currentTime + 1.3);
-
-                noteIndex = (noteIndex + Math.floor(Math.random() * 3) + 1) % scale.length;
-                setTimeout(triggerNextNote, 750);
-            }
-
-            triggerNextNote();
+        function handleUserInteraction() {
+            playSong();
         }
 
-        // Toggle Audio On / Off
-        function toggleAudio() {
-            const audioElement = document.getElementById('wedding-audio');
-
-            if (isPlayingAudio) {
-                if (!useSynthFallback && audioElement) {
-                    audioElement.pause();
-                }
-                if (audioContext) {
-                    audioContext.suspend();
-                }
-                isPlayingAudio = false;
-                updateAudioUI(false);
-            } else {
-                initAndPlayAudio();
-            }
+        function attachInteractionListeners() {
+            window.addEventListener('click', handleUserInteraction, { once: false });
+            window.addEventListener('touchstart', handleUserInteraction, { once: false });
+            window.addEventListener('scroll', handleUserInteraction, { once: false });
+            window.addEventListener('keydown', handleUserInteraction, { once: false });
+            window.addEventListener('pointerdown', handleUserInteraction, { once: false });
         }
 
-        // Update Audio UI Button
-        function updateAudioUI(playing) {
-            const statusText = document.getElementById('audio-status-text');
-            const icon = document.getElementById('audio-icon');
-            const ping = document.getElementById('audio-ping');
-
-            if (playing) {
-                statusText.innerText = "🎵 Music ON";
-                icon.className = "fa-solid fa-volume-high text-gold-400 text-xs";
-                ping.classList.remove('hidden');
-            } else {
-                statusText.innerText = "🎵 Music OFF";
-                icon.className = "fa-solid fa-volume-xmark text-neutral-400 text-xs";
-                ping.classList.add('hidden');
-            }
+        function removeInteractionListeners() {
+            window.removeEventListener('click', handleUserInteraction);
+            window.removeEventListener('touchstart', handleUserInteraction);
+            window.removeEventListener('scroll', handleUserInteraction);
+            window.removeEventListener('keydown', handleUserInteraction);
+            window.removeEventListener('pointerdown', handleUserInteraction);
         }
 
-        // Add to Calendar (.ics Download)
+        // Add to Calendar (.ics download)
         function addToCalendar() {
             const title = "Wedding Celebration: Prasad & Navyasri";
             const details = "Join us in celebrating the wedding of Prasad & Navyasri.\nVenue: Dhanalakshmi function hall, Yelamanchili, Andhra pradesh, 531055, India";
@@ -573,46 +490,28 @@ END:VCALENDAR`;
             triggerPetals();
         }
 
-        // Falling Rose Petals Effect
+        // Petal Confetti Animation
         function triggerPetals() {
             if (typeof confetti === 'function') {
                 confetti({
-                    particleCount: 50,
+                    particleCount: 45,
                     spread: 80,
                     origin: { y: 0.2 },
-                    colors: ['#800020', '#b8860b', '#d4af37', '#f3e5ab', '#ffb7c5']
+                    colors: ['#3D0C15', '#b8860b', '#D4AF37', '#f3e5ab', '#ffb7c5']
                 });
             }
         }
 
-        // App Initialization
+        // Initialize Application
         window.onload = function() {
             startCountdown();
-            setTimeout(triggerPetals, 600);
+            setTimeout(triggerPetals, 500);
 
-            // Handle audio file error and fallback seamlessly to synthesizer
-            const audioElement = document.getElementById('wedding-audio');
-            audioElement.addEventListener('error', function() {
-                useSynthFallback = true;
-            });
-            audioElement.addEventListener('stalled', function() {
-                useSynthFallback = true;
-            });
+            // Attempt Immediate Unprompted Autoplay
+            playSong();
 
-            // Unlock audio on initial user gesture (click, scroll, touch) to bypass browser policy blocks
-            const startAudioOnInteraction = () => {
-                initAndPlayAudio();
-                document.removeEventListener('click', startAudioOnInteraction);
-                document.removeEventListener('touchstart', startAudioOnInteraction);
-                document.removeEventListener('scroll', startAudioOnInteraction);
-            };
-
-            document.addEventListener('click', startAudioOnInteraction);
-            document.addEventListener('touchstart', startAudioOnInteraction);
-            document.addEventListener('scroll', startAudioOnInteraction);
-            
-            // Try initial play directly on load
-            initAndPlayAudio();
+            // Attach listeners to trigger play() on first user gesture seamlessly
+            attachInteractionListeners();
         };
     </script>
 </body>
