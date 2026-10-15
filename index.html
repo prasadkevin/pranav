@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Canvas Confetti for Petal Effects -->
@@ -22,22 +22,26 @@
                     colors: {
                         maroon: {
                             800: '#520f1c',
-                            900: '#3c0919',
-                            950: '#23030d',
+                            900: '#3D0C15',
+                            950: '#22060B',
                         },
                         gold: {
+                            200: '#fef08a',
                             300: '#f3e5ab',
                             400: '#e5c158',
-                            500: '#d4af37',
+                            500: '#D4AF37',
                             600: '#b8860b',
                         },
-                        ivory: '#f9f6f0',
-                        creamDark: '#f2eae1',
+                        cream: {
+                            100: '#fdfbf7',
+                            200: '#f8f4ec',
+                            300: '#f1e9da',
+                        }
                     },
                     fontFamily: {
                         serif: ['"Cormorant Garamond"', 'serif'],
                         cinzel: ['"Cinzel"', 'serif'],
-                        display: ['"Playfair Display"', 'serif'],
+                        cursive: ['"Great Vibes"', 'cursive'],
                         sans: ['"Montserrat"', 'sans-serif'],
                     }
                 }
@@ -46,222 +50,231 @@
     </script>
     <style>
         body {
-            background-color: #121212;
+            background: #0f0207;
+            background-image: 
+                radial-gradient(circle at 50% 0%, #3D0C15 0%, #22060B 60%, #080104 100%);
             font-family: 'Montserrat', sans-serif;
-        }
-        
-        .font-serif-title {
-            font-family: 'Cormorant Garamond', serif;
+            color: #2b2b2b;
+            min-height: 100vh;
         }
 
-        .font-cinzel-title {
-            font-family: 'Cinzel', serif;
+        /* Gold Shimmer Text Effect */
+        .gold-shimmer {
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
         }
 
-        /* Arch Header with Shadow Frame */
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Arch Header Frame */
         .arch-header-container {
             position: relative;
-            padding-top: 2rem;
         }
+
         .arch-frame {
             width: 88%;
-            max-width: 340px;
-            height: 480px;
-            border: 1.5px solid rgba(212, 175, 55, 0.45);
+            max-width: 320px;
+            height: 450px;
+            border: 1.5px solid rgba(212, 175, 55, 0.5);
             border-bottom: none;
-            border-radius: 170px 170px 0 0;
+            border-radius: 160px 160px 0 0;
             margin: 0 auto;
             position: absolute;
-            top: 2.5rem;
+            top: 2rem;
             left: 50%;
             transform: translateX(-50%);
             pointer-events: none;
+            z-index: 10;
         }
 
-        /* Floral Frame Overlay Top Corner Accents */
+        /* Top Overlay Shader */
         .floral-top-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 140px;
-            background-image: radial-gradient(circle at 50% -20%, rgba(139, 0, 0, 0.95), transparent 70%),
-                              url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%23800020' opacity='0.3'%3E%3Cpath d='M50 0 C20 20 0 50 0 100 C50 100 80 50 100 0 Z'/%3E%3C/svg%3E");
-            background-size: cover;
+            height: 150px;
+            background: radial-gradient(ellipse at top, rgba(82, 15, 28, 0.9), transparent 70%);
             pointer-events: none;
-            z-index: 10;
+            z-index: 5;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.18), 0 0 15px rgba(212, 175, 55, 0.12);
         }
-        ::-webkit-scrollbar-track {
-            background: #1a1a1a;
+
+        /* Floating Audio Control Pill */
+        .audio-pill {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            z-index: 100;
+            background: rgba(34, 6, 11, 0.92);
+            border: 1px solid rgba(212, 175, 55, 0.6);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
-        ::-webkit-scrollbar-thumb {
-            background: #3c0919;
-            border-radius: 4px;
-        }
+
+        /* Smooth Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0f0207; }
+        ::-webkit-scrollbar-thumb { background: #3D0C15; border-radius: 3px; }
     </style>
 </head>
-<body class="min-h-screen text-slate-800 flex flex-col items-center justify-start p-0 md:p-6 overflow-x-hidden">
+<body class="min-h-screen flex flex-col items-center justify-start p-0 sm:p-4 md:p-6 overflow-x-hidden select-none">
 
-    <!-- Top Floating Toolbar -->
-    <header class="fixed top-3 z-50 flex items-center gap-2 md:gap-3 bg-neutral-900/90 backdrop-blur-md px-4 py-2 rounded-full border border-gold-500/30 shadow-2xl text-xs text-white max-w-[95vw] overflow-x-auto">
-        <button onclick="toggleAudio()" id="audio-btn" class="bg-neutral-800 hover:bg-neutral-700 text-gold-400 border border-gold-500/30 px-3 py-1.5 rounded-full transition flex items-center gap-1.5 whitespace-nowrap">
-            <i class="fa-solid fa-music"></i> <span id="audio-txt">Play Music</span>
-        </button>
-        <button onclick="toggleEditor()" class="bg-gold-500 hover:bg-gold-600 text-maroon-950 px-3 py-1.5 rounded-full font-semibold transition flex items-center gap-1.5 shadow-md whitespace-nowrap">
-            <i class="fa-solid fa-sliders"></i> Edit & Upload
-        </button>
-        <button onclick="triggerPetals()" class="bg-maroon-900 hover:bg-maroon-800 text-gold-300 border border-gold-500/40 px-3 py-1.5 rounded-full transition flex items-center gap-1.5 whitespace-nowrap">
-            <i class="fa-solid fa-heart"></i> Petals
-        </button>
-        <button onclick="copyInviteLink()" class="bg-neutral-800 hover:bg-neutral-700 text-white px-3 py-1.5 rounded-full transition flex items-center gap-1.5 whitespace-nowrap">
-            <i class="fa-solid fa-share-nodes"></i> Share
-        </button>
-    </header>
+    <!-- HTML5 Audio Element explicitly loading "song", "song.mp3", "song.wav", "song.ogg" -->
+    <audio id="wedding-audio" loop preload="auto">
+        <source src="song" type="audio/mp3">
+        <source src="song.mp3" type="audio/mpeg">
+        <source src="song.wav" type="audio/wav">
+        <source src="song.ogg" type="audio/ogg">
+    </audio>
 
-    <!-- Main Container Mockup Phone Shell -->
-    <main id="card-container" class="w-full max-w-[420px] my-14 md:my-6 bg-ivory shadow-2xl rounded-[38px] overflow-hidden border-[6px] border-neutral-800 relative transition-all duration-300">
+    <!-- Floating Audio Control Toggle -->
+    <div onclick="toggleAudio()" id="audio-indicator" class="audio-pill rounded-full px-4 py-2 flex items-center gap-2.5 text-gold-300 text-xs cursor-pointer hover:scale-105 transition-all">
+        <span class="relative flex h-2 w-2">
+            <span id="audio-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75"></span>
+            <span id="audio-dot" class="relative inline-flex rounded-full h-2 w-2 bg-gold-500"></span>
+        </span>
+        <i id="audio-icon" class="fa-solid fa-music text-gold-400 text-xs"></i>
+        <span id="audio-status-text" class="font-medium tracking-wide text-[11px]">🎵 Music ON</span>
+    </div>
+
+    <!-- Main Mobile Frame Container -->
+    <main id="card-container" class="w-full max-w-[420px] bg-cream-100 shadow-2xl rounded-none sm:rounded-[36px] overflow-hidden border-0 sm:border-[5px] border-gold-600/30 my-0 sm:my-4 relative transition-all duration-300">
         
-        <!-- ================= HERO TOP ARCH SECTION ================= -->
-        <section class="bg-gradient-to-b from-maroon-950 via-maroon-900 to-maroon-950 text-white text-center pt-8 pb-14 px-6 relative overflow-hidden arch-header-container">
+        <!-- ================= HERO ARCH TOP SECTION ================= -->
+        <section class="bg-gradient-to-b from-maroon-950 via-maroon-900 to-maroon-950 text-white text-center pt-10 pb-16 px-6 relative overflow-hidden arch-header-container">
             
-            <!-- Rose Petal Canopy Floral Deco Top Overlay -->
             <div class="floral-top-overlay"></div>
-
-            <!-- Arch Border Overlay Frame -->
             <div class="arch-frame"></div>
 
-            <!-- Optional Background Couple Silhouette Layer -->
-            <div id="hero-bg-overlay" class="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-screen transition-all duration-500 pointer-events-none" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80');"></div>
-            
-            <!-- Top Arch Emblem / Crest -->
-            <div class="relative z-20 pt-3 mb-2 flex justify-center">
-                <div class="text-gold-400 text-lg flex items-center gap-1">
-                    <span>❖</span>
-                    <i class="fa-solid fa-crown text-xs"></i>
-                    <span>❖</span>
+            <div class="absolute top-3 left-4 text-gold-500/40 text-xs">❖</div>
+            <div class="absolute top-3 right-4 text-gold-500/40 text-xs">❖</div>
+
+            <!-- Top Arch Crest -->
+            <div class="relative z-20 pt-2 mb-3 flex justify-center">
+                <div class="text-gold-400 text-sm flex items-center gap-2">
+                    <span class="h-[1px] w-6 bg-gold-500/40"></span>
+                    <i class="fa-solid fa-crown text-gold-400 text-xs"></i>
+                    <span class="h-[1px] w-6 bg-gold-500/40"></span>
                 </div>
             </div>
 
-            <!-- Subheading -->
             <div class="relative z-20 mb-6">
-                <p id="disp-welcome" class="text-[10px] tracking-[0.22em] text-gold-300 uppercase font-semibold">
+                <p class="text-[9.5px] tracking-[0.25em] text-gold-300 uppercase font-semibold">
                     WELCOME TO OUR CELEBRATION OF LOVE 💕
                 </p>
             </div>
 
             <!-- Couple Names & Parents -->
-            <div class="space-y-5 relative z-20">
+            <div class="space-y-6 relative z-20">
                 <!-- Groom -->
-                <div>
-                    <h1 id="disp-groom" class="font-cinzel-title text-3xl md:text-4xl text-gold-300 font-semibold tracking-wider drop-shadow-md uppercase">
+                <div class="px-2">
+                    <h1 class="font-cinzel text-3xl sm:text-4xl gold-shimmer font-bold tracking-wider drop-shadow-lg uppercase">
                         PRASAD
                     </h1>
-                    <p id="disp-groom-parents" class="text-[11px] text-neutral-300 font-light mt-1 tracking-wider uppercase">
+                    <p class="text-[10.5px] text-neutral-300 font-light mt-1.5 tracking-wider uppercase">
                         MR. SATYANARAYANA & MRS. NAGAMANI
                     </p>
                 </div>
 
-                <!-- Divider Icon -->
+                <!-- Ampersand -->
                 <div class="flex items-center justify-center gap-3 my-1">
-                    <div class="h-[1px] w-10 bg-gradient-to-r from-transparent via-gold-500/60 to-transparent"></div>
-                    <span class="font-serif italic text-gold-400 text-lg">&</span>
-                    <div class="h-[1px] w-10 bg-gradient-to-r from-transparent via-gold-500/60 to-transparent"></div>
+                    <div class="h-[1px] w-12 bg-gradient-to-r from-transparent via-gold-500/70 to-transparent"></div>
+                    <span class="font-serif italic text-gold-300 text-xl font-normal">&</span>
+                    <div class="h-[1px] w-12 bg-gradient-to-r from-transparent via-gold-500/70 to-transparent"></div>
                 </div>
 
                 <!-- Bride -->
-                <div>
-                    <h1 id="disp-bride" class="font-cinzel-title text-3xl md:text-4xl text-gold-300 font-semibold tracking-wider drop-shadow-md uppercase">
+                <div class="px-2">
+                    <h1 class="font-cinzel text-3xl sm:text-4xl gold-shimmer font-bold tracking-wider drop-shadow-lg uppercase">
                         NAVYASRI
                     </h1>
-                    <p id="disp-bride-parents" class="text-[11px] text-neutral-300 font-light mt-1 tracking-wider uppercase">
+                    <p class="text-[10.5px] text-neutral-300 font-light mt-1.5 tracking-wider uppercase">
                         MR. RAMANA BABU & MRS. KUMARI
                     </p>
                 </div>
             </div>
 
-            <!-- Event Tagline -->
-            <p id="disp-tagline" class="font-serif italic text-gold-300/90 text-sm mt-6 relative z-20">
+            <p class="font-serif italic text-gold-300/90 text-base mt-7 relative z-20">
                 Wedding Celebration
             </p>
 
-            <!-- Pill Info Buttons -->
-            <div class="mt-7 space-y-2.5 relative z-20 max-w-[300px] mx-auto text-xs font-medium">
-                <!-- Date Pill -->
-                <div class="bg-neutral-900/60 border border-gold-500/40 backdrop-blur-sm rounded-full py-2.5 px-4 text-neutral-200 flex items-center justify-center gap-2 shadow-inner">
+            <!-- Pill Info Badges -->
+            <div class="mt-7 space-y-2.5 relative z-20 max-w-[290px] mx-auto text-xs font-medium">
+                <div class="bg-maroon-950/80 border border-gold-500/40 backdrop-blur-md rounded-full py-2.5 px-4 text-neutral-200 flex items-center justify-center gap-2 shadow-inner">
                     <i class="fa-regular fa-calendar-check text-gold-400"></i>
-                    <span id="disp-event-date" class="uppercase text-[11px] tracking-wide">WEDNESDAY, 23 DECEMBER 2026</span>
+                    <span class="uppercase text-[10.5px] tracking-wider font-semibold">WEDNESDAY, 23 DECEMBER 2026</span>
                 </div>
 
-                <!-- Time Pill -->
-                <div class="bg-neutral-900/60 border border-gold-500/40 backdrop-blur-sm rounded-full py-2.5 px-4 text-neutral-200 flex items-center justify-center gap-2 shadow-inner">
+                <div class="bg-maroon-950/80 border border-gold-500/40 backdrop-blur-md rounded-full py-2.5 px-4 text-neutral-200 flex items-center justify-center gap-2 shadow-inner">
                     <i class="fa-regular fa-clock text-gold-400"></i>
-                    <span id="disp-event-time" class="uppercase text-[11px] tracking-wide">07:30 PM ONWARDS</span>
+                    <span class="uppercase text-[10.5px] tracking-wider font-semibold">07:30 PM ONWARDS</span>
                 </div>
 
-                <!-- Add to Calendar Pill Button -->
-                <button onclick="addToCalendar()" class="w-full bg-gradient-to-r from-gold-300 via-gold-400 to-gold-500 hover:brightness-110 text-maroon-950 font-bold py-2.5 px-4 rounded-full flex items-center justify-center gap-2 shadow-lg transition active:scale-95 uppercase tracking-wider text-[11px]">
-                    ADD TO CALENDAR
+                <button onclick="addToCalendar()" class="w-full bg-gradient-to-r from-gold-300 via-gold-400 to-gold-500 hover:brightness-110 text-maroon-950 font-bold py-2.5 px-4 rounded-full flex items-center justify-center gap-2 shadow-lg transition active:scale-95 uppercase tracking-wider text-[10.5px]">
+                    <i class="fa-solid fa-calendar-plus text-xs"></i> ADD TO CALENDAR
                 </button>
             </div>
 
-            <!-- Smooth fade gradient bottom boundary -->
-            <div class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-b from-transparent to-ivory"></div>
+            <div class="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-b from-transparent to-cream-100"></div>
         </section>
 
         <!-- ================= LIVE COUNTDOWN SECTION ================= -->
-        <section class="px-5 py-5 text-center relative z-20">
-            <p class="text-[10px] tracking-[0.25em] text-maroon-900 font-bold uppercase mb-4">
+        <section class="px-5 py-6 text-center relative z-20">
+            <p class="text-[9.5px] tracking-[0.25em] text-maroon-900 font-bold uppercase mb-4">
                 COUNTING EVERY MOMENT
             </p>
 
-            <!-- Countdown Cards Grid -->
-            <div class="grid grid-cols-4 gap-2 text-maroon-900">
-                <!-- Days -->
-                <div class="bg-white rounded-2xl p-3 shadow-md border border-neutral-200/80 flex flex-col items-center justify-center">
-                    <span id="count-days" class="font-cinzel-title text-2xl font-bold leading-none">00</span>
-                    <span class="text-[9px] tracking-wider uppercase text-neutral-400 mt-1 font-semibold">DAYS</span>
+            <div class="grid grid-cols-4 gap-2.5 text-maroon-950">
+                <div class="glass-card rounded-2xl p-3 flex flex-col items-center justify-center border border-gold-500/20">
+                    <span id="count-days" class="font-cinzel text-2xl font-extrabold leading-none text-maroon-900">00</span>
+                    <span class="text-[8.5px] tracking-widest uppercase text-neutral-500 mt-1 font-semibold">DAYS</span>
                 </div>
-                <!-- Hours -->
-                <div class="bg-white rounded-2xl p-3 shadow-md border border-neutral-200/80 flex flex-col items-center justify-center">
-                    <span id="count-hours" class="font-cinzel-title text-2xl font-bold leading-none">00</span>
-                    <span class="text-[9px] tracking-wider uppercase text-neutral-400 mt-1 font-semibold">HOURS</span>
+                <div class="glass-card rounded-2xl p-3 flex flex-col items-center justify-center border border-gold-500/20">
+                    <span id="count-hours" class="font-cinzel text-2xl font-extrabold leading-none text-maroon-900">00</span>
+                    <span class="text-[8.5px] tracking-widest uppercase text-neutral-500 mt-1 font-semibold">HOURS</span>
                 </div>
-                <!-- Minutes -->
-                <div class="bg-white rounded-2xl p-3 shadow-md border border-neutral-200/80 flex flex-col items-center justify-center">
-                    <span id="count-mins" class="font-cinzel-title text-2xl font-bold leading-none">00</span>
-                    <span class="text-[9px] tracking-wider uppercase text-neutral-400 mt-1 font-semibold">MINS</span>
+                <div class="glass-card rounded-2xl p-3 flex flex-col items-center justify-center border border-gold-500/20">
+                    <span id="count-mins" class="font-cinzel text-2xl font-extrabold leading-none text-maroon-900">00</span>
+                    <span class="text-[8.5px] tracking-widest uppercase text-neutral-500 mt-1 font-semibold">MINS</span>
                 </div>
-                <!-- Seconds -->
-                <div class="bg-white rounded-2xl p-3 shadow-md border border-neutral-200/80 flex flex-col items-center justify-center">
-                    <span id="count-secs" class="font-cinzel-title text-2xl font-bold leading-none text-maroon-800">00</span>
-                    <span class="text-[9px] tracking-wider uppercase text-neutral-400 mt-1 font-semibold">SECS</span>
+                <div class="glass-card rounded-2xl p-3 flex flex-col items-center justify-center border border-gold-500/20">
+                    <span id="count-secs" class="font-cinzel text-2xl font-extrabold leading-none text-gold-600">00</span>
+                    <span class="text-[8.5px] tracking-widest uppercase text-neutral-500 mt-1 font-semibold">SECS</span>
                 </div>
             </div>
         </section>
 
-        <!-- ================= VENUE SECTION ================= -->
-        <section class="px-5 py-3">
-            <div class="bg-white rounded-3xl p-6 shadow-md border border-neutral-200/80 text-center relative">
-                <div class="w-9 h-9 mx-auto rounded-full bg-pink-50 flex items-center justify-center mb-2.5 text-maroon-900 text-sm">
-                    <i class="fa-solid fa-location-dot"></i>
+        <!-- ================= VENUE CARD SECTION ================= -->
+        <section class="px-5 py-2">
+            <div class="glass-card rounded-3xl p-6 text-center relative">
+                <div class="w-10 h-10 mx-auto rounded-full bg-maroon-900 text-gold-300 flex items-center justify-center mb-3 shadow-md border border-gold-500/30">
+                    <i class="fa-solid fa-location-dot text-sm"></i>
                 </div>
 
-                <p class="text-[9px] tracking-[0.2em] text-neutral-400 font-semibold uppercase">THE VENUE</p>
+                <p class="text-[9px] tracking-[0.22em] text-neutral-400 font-bold uppercase">THE VENUE</p>
                 
-                <h3 id="disp-venue-name" class="font-cinzel-title text-2xl font-bold text-maroon-900 tracking-wide mt-1">
+                <h3 class="font-cinzel text-2xl font-bold text-maroon-900 tracking-wide mt-1">
                     YELAMANCHILI
                 </h3>
 
-                <p id="disp-venue-address" class="text-xs text-neutral-600 mt-2 leading-relaxed max-w-[280px] mx-auto font-light">
+                <p class="text-xs text-neutral-600 mt-2 leading-relaxed max-w-[280px] mx-auto font-normal">
                     Dhanalakshmi function hall, Yelamanchili, Andhra pradesh, 531055, India
                 </p>
 
-                <a id="disp-map-link" href="https://maps.google.com/?q=Dhanalakshmi+function+hall+Yelamanchili" target="_blank" class="mt-5 inline-flex items-center justify-center gap-2 w-full bg-maroon-900 hover:bg-maroon-950 text-gold-300 py-3 px-4 rounded-full font-medium text-xs shadow-md transition active:scale-95">
+                <a href="https://maps.google.com/?q=Dhanalakshmi+function+hall+Yelamanchili" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center justify-center gap-2 w-full bg-maroon-900 hover:bg-maroon-950 text-gold-300 py-3 px-4 rounded-full font-semibold text-xs shadow-md transition active:scale-95 border border-gold-500/30">
                     <i class="fa-solid fa-paper-plane text-xs"></i>
                     Get Directions on Google Maps
                 </a>
@@ -269,68 +282,68 @@
         </section>
 
         <!-- ================= PROGRAM OF CELEBRATIONS ================= -->
-        <section class="px-5 py-5">
+        <section class="px-5 py-6">
             <div class="text-center mb-4">
                 <div class="flex items-center justify-center gap-2 mb-1">
                     <div class="h-[1px] w-8 bg-gold-500/50"></div>
                     <span class="text-gold-600 text-xs">❖</span>
                     <div class="h-[1px] w-8 bg-gold-500/50"></div>
                 </div>
-                <p class="text-[9px] tracking-[0.2em] text-neutral-500 font-semibold uppercase">PROGRAM OF CELEBRATIONS</p>
-                <h2 class="font-cinzel-title text-2xl font-bold text-maroon-900 tracking-wide">
+                <p class="text-[9px] tracking-[0.22em] text-neutral-500 font-bold uppercase">PROGRAM OF CELEBRATIONS</p>
+                <h2 class="font-cinzel text-2xl font-bold text-maroon-900 tracking-wide">
                     WEDDING CELEBRATIONS
                 </h2>
             </div>
 
-            <!-- Detailed Event Timeline Card -->
-            <div class="bg-white rounded-3xl p-6 shadow-md border border-neutral-200/80 space-y-5 text-center">
+            <!-- Event Timeline Card -->
+            <div class="glass-card rounded-3xl p-6 space-y-6 text-center">
                 
-                <!-- Event 1: The Date -->
+                <!-- Date -->
                 <div class="space-y-1">
-                    <div class="w-8 h-8 mx-auto rounded-full bg-pink-50 flex items-center justify-center text-maroon-900 text-xs mb-1.5">
+                    <div class="w-8 h-8 mx-auto rounded-full bg-maroon-900/10 text-maroon-900 flex items-center justify-center text-xs mb-1.5">
                         <i class="fa-regular fa-calendar-days"></i>
                     </div>
-                    <p class="text-[9px] tracking-[0.2em] text-neutral-400 font-semibold uppercase">THE DATE</p>
-                    <h4 id="disp-timeline-date" class="font-cinzel-title text-lg font-bold text-maroon-900">
+                    <p class="text-[9px] tracking-[0.22em] text-neutral-400 font-bold uppercase">THE DATE</p>
+                    <h4 class="font-cinzel text-lg font-bold text-maroon-900">
                         Wednesday, 23 December 2026
                     </h4>
-                    <p class="text-[11px] italic text-neutral-500">
+                    <p class="text-[11px] italic font-serif text-neutral-500">
                         Auspicious day of celebration
                     </p>
                 </div>
 
-                <div class="w-16 h-[1px] bg-neutral-200 mx-auto relative">
-                    <div class="w-1.5 h-1.5 bg-neutral-300 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                <div class="w-20 h-[1px] bg-gradient-to-r from-transparent via-gold-500/40 to-transparent mx-auto relative">
+                    <div class="w-1.5 h-1.5 bg-gold-500 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
                 </div>
 
-                <!-- Event 2: Reception -->
+                <!-- Reception -->
                 <div class="space-y-1">
-                    <div class="w-8 h-8 mx-auto rounded-full bg-pink-50 flex items-center justify-center text-maroon-900 text-xs mb-1.5">
+                    <div class="w-8 h-8 mx-auto rounded-full bg-maroon-900/10 text-maroon-900 flex items-center justify-center text-xs mb-1.5">
                         <i class="fa-regular fa-clock"></i>
                     </div>
-                    <p class="text-[9px] tracking-[0.2em] text-neutral-400 font-semibold uppercase">RECEPTION</p>
-                    <h4 id="disp-reception-time" class="font-cinzel-title text-lg font-bold text-maroon-900">
+                    <p class="text-[9px] tracking-[0.22em] text-neutral-400 font-bold uppercase">RECEPTION</p>
+                    <h4 class="font-cinzel text-lg font-bold text-maroon-900">
                         07:30 PM Onwards
                     </h4>
-                    <p class="text-[11px] italic text-neutral-500">
+                    <p class="text-[11px] italic font-serif text-neutral-500">
                         Followed by dinner & celebration
                     </p>
                 </div>
 
-                <div class="w-16 h-[1px] bg-neutral-200 mx-auto relative">
-                    <div class="w-1.5 h-1.5 bg-neutral-300 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                <div class="w-20 h-[1px] bg-gradient-to-r from-transparent via-gold-500/40 to-transparent mx-auto relative">
+                    <div class="w-1.5 h-1.5 bg-gold-500 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
                 </div>
 
-                <!-- Event 3: Muhurtam -->
+                <!-- Muhurtam -->
                 <div class="space-y-1">
-                    <div class="w-8 h-8 mx-auto rounded-full bg-pink-50 flex items-center justify-center text-maroon-900 text-xs mb-1.5">
+                    <div class="w-8 h-8 mx-auto rounded-full bg-maroon-900/10 text-maroon-900 flex items-center justify-center text-xs mb-1.5">
                         <i class="fa-regular fa-heart"></i>
                     </div>
-                    <p class="text-[9px] tracking-[0.2em] text-neutral-400 font-semibold uppercase">MUHURTAM</p>
-                    <h4 id="disp-muhurtam-time" class="font-cinzel-title text-lg font-bold text-maroon-900">
+                    <p class="text-[9px] tracking-[0.22em] text-neutral-400 font-bold uppercase">MUHURTAM</p>
+                    <h4 class="font-cinzel text-lg font-bold text-maroon-900">
                         3 AM
                     </h4>
-                    <p class="text-[11px] italic text-neutral-500">
+                    <p class="text-[11px] italic font-serif text-neutral-500">
                         Solemnization of marriage & blessings
                     </p>
                 </div>
@@ -338,182 +351,73 @@
             </div>
         </section>
 
-        <!-- ================= MEMORIES / PHOTO GALLERY SECTION ================= -->
-        <section class="px-5 py-4 pb-8">
-            <div class="bg-white rounded-3xl p-5 shadow-md border border-neutral-200/80 text-center">
-                <div class="flex items-center justify-center gap-2 text-maroon-900 text-xs mb-1">
-                    <span>❖</span>
-                    <span class="text-[9px] tracking-[0.2em] font-semibold text-neutral-400 uppercase">MEMORIES</span>
-                    <span>❖</span>
-                </div>
+        <!-- ================= MOMENTS OF LOVE PHOTO CARD ================= -->
+        <section class="px-5 pb-8 pt-2">
+            <div class="glass-card rounded-[32px] p-6 text-center border border-gold-500/30 relative">
                 
-                <h3 class="font-cinzel-title text-xl font-bold text-maroon-900 tracking-wide mb-1">
+                <div class="flex items-center justify-center gap-3 mb-2">
+                    <span class="text-maroon-800 text-sm">✦</span>
+                    <span class="bg-maroon-900/10 text-maroon-900 font-semibold px-3 py-1 rounded-full text-[9px] tracking-[0.25em] uppercase">
+                        MEMORIES
+                    </span>
+                    <span class="text-maroon-800 text-sm">✦</span>
+                </div>
+
+                <h3 class="font-cinzel text-2xl font-bold text-maroon-900 tracking-wide mt-1">
                     MOMENTS OF LOVE
                 </h3>
-                <p class="text-[11px] italic text-neutral-500 mb-4">
-                    Captured moments on our journey to forever
+
+                <p class="text-[11px] italic font-serif text-neutral-500 mt-1 mb-5">
+                    Captured memories on our journey to forever
                 </p>
 
-                <!-- Featured Memory Photo Frame -->
-                <div class="relative group rounded-2xl overflow-hidden shadow-inner border border-neutral-200 bg-neutral-100 aspect-[4/3]">
-                    <img id="disp-gallery-photo" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Couple Memory Photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    
-                    <div class="absolute bottom-2 right-2">
-                        <button onclick="document.getElementById('input-gallery-file').click()" class="bg-neutral-900/80 hover:bg-neutral-900 text-gold-300 px-3 py-1.5 rounded-full text-[10px] font-medium backdrop-blur-sm shadow flex items-center gap-1 border border-gold-500/30">
-                            <i class="fa-solid fa-camera"></i> Change Photo
-                        </button>
+                <!-- Embedded Couple Photo from 'image.jpg' with Fallback -->
+                <div class="relative mx-auto rounded-2xl overflow-hidden shadow-xl border-2 border-gold-500/40 bg-neutral-900 min-h-[300px] flex items-center justify-center">
+                    <img 
+                        id="couple-photo" 
+                        src="image.jpg" 
+                        alt="Prasad & Navyasri" 
+                        onerror="handleImageError(this)" 
+                        class="w-full h-auto object-cover block rounded-2xl transition-all duration-300"
+                    />
+
+                    <!-- Couple Overlay Label -->
+                    <div class="absolute bottom-3 left-0 right-0 text-center">
+                        <span class="bg-maroon-950/85 backdrop-blur-md text-gold-300 font-cinzel text-xs px-4 py-1.5 rounded-full border border-gold-500/40 tracking-widest uppercase shadow-md">
+                            Prasad & Navyasri
+                        </span>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- ================= FOOTER BAR ================= -->
-        <footer class="bg-maroon-950 text-center py-6 px-4 text-white">
-            <p class="font-serif italic text-gold-300 text-xs mb-1">We await your presence</p>
-            <p id="disp-footer-names" class="font-cinzel-title text-sm tracking-widest font-bold text-white uppercase">
+        <!-- ================= FOOTER ================= -->
+        <footer class="bg-maroon-950 text-center py-8 px-4 text-white relative border-t border-gold-500/30">
+            <div class="text-gold-400 text-xs mb-2">❖ ❖ ❖</div>
+            <p class="font-serif italic text-gold-300 text-sm mb-1.5">We await your presence</p>
+            <p class="font-cinzel text-sm tracking-widest font-bold text-white uppercase">
                 PRASAD & NAVYASRI
             </p>
         </footer>
 
     </main>
 
-    <!-- Hidden file input for direct photo change on photo frame -->
-    <input type="file" id="input-gallery-file" accept="image/*" class="hidden" onchange="handleGalleryUpload(event)">
-
-    <!-- ================= EDIT / CUSTOMIZATION DRAWER ================= -->
-    <div id="editor-drawer" class="fixed inset-y-0 right-0 w-full max-w-md bg-neutral-900 text-neutral-200 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col border-l border-neutral-800">
-        
-        <!-- Drawer Header -->
-        <div class="p-4 bg-neutral-950 border-b border-neutral-800 flex items-center justify-between">
-            <div class="flex items-center gap-2 text-gold-400 font-semibold text-base">
-                <i class="fa-solid fa-pen-to-square"></i> Customize Invitation & Photos
-            </div>
-            <button onclick="toggleEditor()" class="text-neutral-400 hover:text-white p-2 text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-
-        <!-- Drawer Content Controls -->
-        <div class="p-5 flex-1 overflow-y-auto space-y-6 text-xs">
-            
-            <!-- Image Upload Section -->
-            <div class="space-y-3 bg-neutral-800/60 p-4 rounded-xl border border-neutral-700/60">
-                <h4 class="font-semibold text-gold-300 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-                    <i class="fa-solid fa-image"></i> Photos & Backgrounds
-                </h4>
-                
-                <div>
-                    <label class="block text-neutral-300 mb-1">1. Hero Silhouette / Cover Image</label>
-                    <div class="flex items-center gap-2">
-                        <input type="file" id="input-bg-file" accept="image/*" class="hidden" onchange="handleHeroUpload(event)">
-                        <button onclick="document.getElementById('input-bg-file').click()" class="bg-neutral-700 hover:bg-neutral-600 text-white px-3 py-2 rounded-lg font-medium flex-1 flex items-center justify-center gap-1.5">
-                            <i class="fa-solid fa-upload"></i> Upload Cover
-                        </button>
-                        <button onclick="resetHeroImage()" class="text-red-400 hover:underline text-[11px] px-2">Reset</button>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-neutral-300 mb-1">2. "Moments of Love" Memory Photo</label>
-                    <button onclick="document.getElementById('input-gallery-file').click()" class="w-full bg-neutral-700 hover:bg-neutral-600 text-white px-3 py-2 rounded-lg font-medium flex items-center justify-center gap-1.5">
-                        <i class="fa-solid fa-camera"></i> Upload Gallery Photo
-                    </button>
-                </div>
-            </div>
-
-            <!-- Couple Information -->
-            <div class="space-y-3 bg-neutral-800/60 p-4 rounded-xl border border-neutral-700/60">
-                <h4 class="font-semibold text-gold-300 uppercase tracking-wider text-[11px]">Couple Details</h4>
-                
-                <div>
-                    <label class="block text-neutral-400 mb-1">Groom Name</label>
-                    <input type="text" id="edit-groom" value="PRASAD" class="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-2.5 text-white focus:border-gold-500 focus:outline-none uppercase">
-                </div>
-                <div>
-                    <label class="block text-neutral-400 mb-1">Groom Parents</label>
-                    <input type="text" id="edit-groom-parents" value="MR. SATYANARAYANA & MRS. NAGAMANI" class="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-2.5 text-white focus:border-gold-500 focus:outline-none uppercase">
-                </div>
-
-                <hr class="border-neutral-700 my-2">
-
-                <div>
-                    <label class="block text-neutral-400 mb-1">Bride Name</label>
-                    <input type="text" id="edit-bride" value="NAVYASRI" class="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-2.5 text-white focus:border-gold-500 focus:outline-none uppercase">
-                </div>
-                <div>
-                    <label class="block text-neutral-400 mb-1">Bride Parents</label>
-                    <input type="text" id="edit-bride-parents" value="MR. RAMANA BABU & MRS. KUMARI" class="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-2.5 text-white focus:border-gold-500 focus:outline-none uppercase">
-                </div>
-            </div>
-
-            <!-- Date & Timer Settings -->
-            <div class="space-y-3 bg-neutral-800/60 p-4 rounded-xl border border-neutral-700/60">
-                <h4 class="font-semibold text-gold-300 uppercase tracking-wider text-[11px]">Event Date & Countdown</h4>
-                
-                <div>
-                    <label class="block text-neutral-400 mb-1">Event Date (Text Display)</label>
-                    <input type="text" id="edit-date-text" value="Wednesday, 23 December 2026" class="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-2.5 text-white focus:border-gold-500 focus:outline-none">
-                </div>
-                <div>
-                    <label class="block text-neutral-400 mb-1">Target Date & Time (Live Timer)</label>
-                    <input type="datetime-local" id="edit-target-datetime" value="2026-12-23T19:30" class="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-2.5 text-white focus:border-gold-500 focus:outline-none">
-                </div>
-            </div>
-
-            <!-- Venue Details -->
-            <div class="space-y-3 bg-neutral-800/60 p-4 rounded-xl border border-neutral-700/60">
-                <h4 class="font-semibold text-gold-300 uppercase tracking-wider text-[11px]">Venue & Map Location</h4>
-                
-                <div>
-                    <label class="block text-neutral-400 mb-1">Venue Heading / City</label>
-                    <input type="text" id="edit-venue-name" value="YELAMANCHILI" class="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-2.5 text-white focus:border-gold-500 focus:outline-none">
-                </div>
-                <div>
-                    <label class="block text-neutral-400 mb-1">Full Address</label>
-                    <textarea id="edit-venue-address" rows="2" class="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-2.5 text-white focus:border-gold-500 focus:outline-none">Dhanalakshmi function hall, Yelamanchili, Andhra pradesh, 531055, India</textarea>
-                </div>
-                <div>
-                    <label class="block text-neutral-400 mb-1">Google Maps URL</label>
-                    <input type="text" id="edit-map-url" value="https://maps.google.com/?q=Dhanalakshmi+function+hall+Yelamanchili" class="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-2.5 text-white focus:border-gold-500 focus:outline-none">
-                </div>
-            </div>
-
-            <!-- Event Timings -->
-            <div class="space-y-3 bg-neutral-800/60 p-4 rounded-xl border border-neutral-700/60">
-                <h4 class="font-semibold text-gold-300 uppercase tracking-wider text-[11px]">Program Timings</h4>
-                
-                <div>
-                    <label class="block text-neutral-400 mb-1">Reception Time</label>
-                    <input type="text" id="edit-reception-time" value="07:30 PM Onwards" class="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-2.5 text-white focus:border-gold-500 focus:outline-none">
-                </div>
-                <div>
-                    <label class="block text-neutral-400 mb-1">Muhurtam Time</label>
-                    <input type="text" id="edit-muhurtam-time" value="3 AM" class="w-full bg-neutral-900 border border-neutral-700 rounded-lg p-2.5 text-white focus:border-gold-500 focus:outline-none">
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Drawer Footer Buttons -->
-        <div class="p-4 bg-neutral-950 border-t border-neutral-800 flex gap-2">
-            <button onclick="updateInvitationCard()" class="flex-1 bg-gold-500 hover:bg-gold-600 text-maroon-950 font-bold py-2.5 rounded-xl transition">
-                Apply Changes
-            </button>
-            <button onclick="window.print()" class="bg-neutral-800 hover:bg-neutral-700 text-white px-4 py-2.5 rounded-xl font-medium flex items-center gap-1.5">
-                <i class="fa-solid fa-print"></i> Print
-            </button>
-        </div>
-    </div>
-
-
     <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
-        // Target Date for Countdown
-        let weddingTargetDate = new Date("2026-12-23T19:30:00").getTime();
+        const weddingTargetDate = new Date("2026-12-23T19:30:00").getTime();
         let audioContext = null;
         let isPlayingAudio = false;
+        let useSynthFallback = false;
 
-        // Initialize Live Countdown Timer
+        // Fallback SVG when image.jpg is missing
+        function handleImageError(imgElement) {
+            imgElement.onerror = null;
+            const fallbackSvg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600"><defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="%233a3e42"/><stop offset="100%" stop-color="%231f2225"/></linearGradient></defs><rect width="500" height="600" fill="url(%23bg)"/><path d="M 330 0 L 330 600" stroke="%23717a82" stroke-width="24"/><ellipse cx="180" cy="205" rx="16" ry="20" fill="%23d9a07a"/><ellipse cx="250" cy="125" rx="18" ry="22" fill="%23c68a62"/><rect width="500" height="600" fill="none" stroke="%23d4af37" stroke-width="12"/></svg>`;
+            imgElement.src = fallbackSvg;
+        }
+
+        // Real-Time Countdown Timer
         function startCountdown() {
             function updateTimer() {
                 const now = new Date().getTime();
@@ -536,147 +440,59 @@
                     document.getElementById("count-secs").innerText = "00";
                 }
             }
-
             updateTimer();
             setInterval(updateTimer, 1000);
         }
 
-        // Toggle Customization Drawer
-        function toggleEditor() {
-            const drawer = document.getElementById('editor-drawer');
-            drawer.classList.toggle('translate-x-full');
-        }
+        // Attempts to play local audio file 'song' first, falls back to Web Audio API Shehnai Synthesizer
+        function initAndPlayAudio() {
+            if (isPlayingAudio) return;
 
-        // Apply Custom Changes from Editor
-        function updateInvitationCard() {
-            const groom = document.getElementById('edit-groom').value;
-            const groomParents = document.getElementById('edit-groom-parents').value;
-            const bride = document.getElementById('edit-bride').value;
-            const brideParents = document.getElementById('edit-bride-parents').value;
-            
-            const dateText = document.getElementById('edit-date-text').value;
-            const targetDateTime = document.getElementById('edit-target-datetime').value;
-            
-            const venueName = document.getElementById('edit-venue-name').value;
-            const venueAddress = document.getElementById('edit-venue-address').value;
-            const mapUrl = document.getElementById('edit-map-url').value;
-            
-            const receptionTime = document.getElementById('edit-reception-time').value;
-            const muhurtamTime = document.getElementById('edit-muhurtam-time').value;
+            const audioElement = document.getElementById('wedding-audio');
 
-            // Update DOM Elements
-            document.getElementById('disp-groom').innerText = groom;
-            document.getElementById('disp-groom-parents').innerText = groomParents;
-            document.getElementById('disp-bride').innerText = bride;
-            document.getElementById('disp-bride-parents').innerText = brideParents;
-            document.getElementById('disp-footer-names').innerText = `${groom} & ${bride}`;
-
-            document.getElementById('disp-event-date').innerText = dateText.toUpperCase();
-            document.getElementById('disp-timeline-date').innerText = dateText;
-
-            document.getElementById('disp-venue-name').innerText = venueName;
-            document.getElementById('disp-venue-address').innerText = venueAddress;
-            document.getElementById('disp-map-link').href = mapUrl;
-
-            document.getElementById('disp-event-time').innerText = `${receptionTime} ONWARDS`.toUpperCase();
-            document.getElementById('disp-reception-time').innerText = receptionTime;
-            document.getElementById('disp-muhurtam-time').innerText = muhurtamTime;
-
-            // Update Timer Date
-            if (targetDateTime) {
-                weddingTargetDate = new Date(targetDateTime).getTime();
-            }
-
-            toggleEditor();
-            triggerPetals();
-        }
-
-        // Handle Background & Gallery Image Uploads
-        function handleHeroUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const heroBg = document.getElementById('hero-bg-overlay');
-                    heroBg.style.backgroundImage = `url('${e.target.result}')`;
-                    heroBg.classList.remove('opacity-20', 'mix-blend-screen');
-                    heroBg.classList.add('opacity-40');
-                };
-                reader.readAsDataURL(file);
+            if (!useSynthFallback) {
+                audioElement.play().then(() => {
+                    isPlayingAudio = true;
+                    updateAudioUI(true);
+                }).catch(() => {
+                    // Audio file unreadable or missing, switch to Web Audio Synthesizer
+                    useSynthFallback = true;
+                    playSyntheticMelody();
+                });
+            } else {
+                playSyntheticMelody();
             }
         }
 
-        function handleGalleryUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('disp-gallery-photo').src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function resetHeroImage() {
-            const heroBg = document.getElementById('hero-bg-overlay');
-            heroBg.style.backgroundImage = "url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80')";
-            heroBg.classList.add('opacity-20', 'mix-blend-screen');
-        }
-
-        // Copy Invite Share Link
-        function copyInviteLink() {
-            const dummy = document.createElement('input');
-            document.body.appendChild(dummy);
-            dummy.value = window.location.href;
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
-            
-            triggerPetals();
-            
-            // Custom toast/message box instead of alert()
-            const toast = document.createElement('div');
-            toast.className = 'fixed bottom-5 left-1/2 -translate-x-1/2 bg-neutral-900 text-gold-300 border border-gold-500/40 px-5 py-3 rounded-2xl shadow-2xl z-50 text-xs font-semibold';
-            toast.innerHTML = '<i class="fa-solid fa-circle-check text-gold-400 mr-1.5"></i> Invitation link copied to clipboard!';
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 3000);
-        }
-
-        // Synthesize Indian Flute Melody using Web Audio API
-        function toggleAudio() {
-            const btnTxt = document.getElementById('audio-txt');
-            if (isPlayingAudio) {
-                if (audioContext) audioContext.suspend();
-                isPlayingAudio = false;
-                btnTxt.innerText = "Play Music";
-                return;
-            }
-
+        // Web Audio Synthesizer Engine (Indian Shehnai Melodic Fallback)
+        function playSyntheticMelody() {
             if (!audioContext) {
                 const AudioContext = window.AudioContext || window.webkitAudioContext;
                 audioContext = new AudioContext();
-            } else {
+            }
+
+            if (audioContext.state === 'suspended') {
                 audioContext.resume();
             }
 
             isPlayingAudio = true;
-            btnTxt.innerText = "Pause Music";
+            updateAudioUI(true);
 
-            // Play ambient festive melody notes loop
-            const notes = [293.66, 329.63, 369.99, 440.00, 493.88, 554.37, 587.33]; // Raga Mohanam notes (D, E, F#, A, B)
-            let noteIdx = 0;
+            const scale = [261.63, 277.18, 329.63, 349.23, 392.00, 415.30, 493.88, 523.25];
+            let noteIndex = 0;
 
-            function playNextNote() {
-                if (!isPlayingAudio) return;
+            function triggerNextNote() {
+                if (!isPlayingAudio || !useSynthFallback) return;
 
                 const osc = audioContext.createOscillator();
                 const gain = audioContext.createGain();
 
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(notes[noteIdx % notes.length], audioContext.currentTime);
+                osc.type = noteIndex % 2 === 0 ? 'sawtooth' : 'triangle';
+                const freq = scale[noteIndex % scale.length];
+                osc.frequency.setValueAtTime(freq, audioContext.currentTime);
 
-                gain.gain.setValueAtTime(0.01, audioContext.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.12, audioContext.currentTime + 0.2);
+                gain.gain.setValueAtTime(0.001, audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.05, audioContext.currentTime + 0.25);
                 gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1.2);
 
                 osc.connect(gain);
@@ -685,61 +501,118 @@
                 osc.start();
                 osc.stop(audioContext.currentTime + 1.3);
 
-                noteIdx++;
-                setTimeout(playNextNote, 800);
+                noteIndex = (noteIndex + Math.floor(Math.random() * 3) + 1) % scale.length;
+                setTimeout(triggerNextNote, 750);
             }
 
-            playNextNote();
+            triggerNextNote();
         }
 
-        // Download / Add to Calendar (.ics File)
+        // Toggle Audio On / Off
+        function toggleAudio() {
+            const audioElement = document.getElementById('wedding-audio');
+
+            if (isPlayingAudio) {
+                if (!useSynthFallback && audioElement) {
+                    audioElement.pause();
+                }
+                if (audioContext) {
+                    audioContext.suspend();
+                }
+                isPlayingAudio = false;
+                updateAudioUI(false);
+            } else {
+                initAndPlayAudio();
+            }
+        }
+
+        // Update Audio UI Button
+        function updateAudioUI(playing) {
+            const statusText = document.getElementById('audio-status-text');
+            const icon = document.getElementById('audio-icon');
+            const ping = document.getElementById('audio-ping');
+
+            if (playing) {
+                statusText.innerText = "🎵 Music ON";
+                icon.className = "fa-solid fa-volume-high text-gold-400 text-xs";
+                ping.classList.remove('hidden');
+            } else {
+                statusText.innerText = "🎵 Music OFF";
+                icon.className = "fa-solid fa-volume-xmark text-neutral-400 text-xs";
+                ping.classList.add('hidden');
+            }
+        }
+
+        // Add to Calendar (.ics Download)
         function addToCalendar() {
-            const groom = document.getElementById('disp-groom').innerText;
-            const bride = document.getElementById('disp-bride').innerText;
-            const venue = document.getElementById('disp-venue-name').innerText;
-            const address = document.getElementById('disp-venue-address').innerText;
+            const title = "Wedding Celebration: Prasad & Navyasri";
+            const details = "Join us in celebrating the wedding of Prasad & Navyasri.\nVenue: Dhanalakshmi function hall, Yelamanchili, Andhra pradesh, 531055, India";
+            const location = "Dhanalakshmi function hall, Yelamanchili, Andhra Pradesh, 531055, India";
 
-            const title = `Wedding Celebration: ${groom} & ${bride}`;
-            const details = `Join us in celebrating the wedding of ${groom} & ${bride}.\nVenue: ${address}`;
-
-            const icsData = 
+            const icsContent = 
 `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Wedding Invitation//EN
 BEGIN:VEVENT
 SUMMARY:${title}
 DESCRIPTION:${details}
-LOCATION:${venue}, ${address}
+LOCATION:${location}
 DTSTART:20261223T140000Z
 DTEND:20261223T220000Z
 END:VEVENT
 END:VCALENDAR`;
 
-            const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8;' });
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
-            link.setAttribute('download', `${groom}_${bride}_Wedding.ics`);
+            link.setAttribute('download', 'Prasad_Navyasri_Wedding.ics');
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+            
+            triggerPetals();
         }
 
-        // Falling Petals Visual Effect
+        // Falling Rose Petals Effect
         function triggerPetals() {
             if (typeof confetti === 'function') {
                 confetti({
-                    particleCount: 45,
-                    spread: 70,
-                    origin: { y: 0.15 },
+                    particleCount: 50,
+                    spread: 80,
+                    origin: { y: 0.2 },
                     colors: ['#800020', '#b8860b', '#d4af37', '#f3e5ab', '#ffb7c5']
                 });
             }
         }
 
-        // Initialize
+        // App Initialization
         window.onload = function() {
             startCountdown();
-            setTimeout(triggerPetals, 700);
+            setTimeout(triggerPetals, 600);
+
+            // Handle audio file error and fallback seamlessly to synthesizer
+            const audioElement = document.getElementById('wedding-audio');
+            audioElement.addEventListener('error', function() {
+                useSynthFallback = true;
+            });
+            audioElement.addEventListener('stalled', function() {
+                useSynthFallback = true;
+            });
+
+            // Unlock audio on initial user gesture (click, scroll, touch) to bypass browser policy blocks
+            const startAudioOnInteraction = () => {
+                initAndPlayAudio();
+                document.removeEventListener('click', startAudioOnInteraction);
+                document.removeEventListener('touchstart', startAudioOnInteraction);
+                document.removeEventListener('scroll', startAudioOnInteraction);
+            };
+
+            document.addEventListener('click', startAudioOnInteraction);
+            document.addEventListener('touchstart', startAudioOnInteraction);
+            document.addEventListener('scroll', startAudioOnInteraction);
+            
+            // Try initial play directly on load
+            initAndPlayAudio();
         };
     </script>
 </body>
